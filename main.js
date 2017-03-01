@@ -73,8 +73,15 @@ function draw() {
   drawBall();
   drawPaddle();
 
-  if(y + dy > canvas1.height - ballRad || y + dy < ballRad) {
+  if(y + dy < ballRad) {
     dy = -dy;
+  }else if(y + dy > canvas1.height - ballRad) {
+    if(x > paddleX && x < paddleX + paddleWidth){
+      dy = -dy;
+    }else {
+      alert("GAME OVER");
+      document.location.reload();
+    }
   }
 
   if(x + dx > canvas1.width - ballRad || x + dx < ballRad) {
